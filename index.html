@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FireNav: decision-oriented reconstruction evidence routing for vision-language navigation in indoor fire environments. Explore FireVLN-Bench, navigation demonstrations, the method, and experimental results.">
+  <meta name="theme-color" content="#101820">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FireNav · Navigation through fire-induced visual degradation">
+  <meta property="og:description" content="Decision-oriented reconstruction evidence routing for vision-language navigation. FireVLN-Bench, interactive demonstrations, and results.">
+  <title>FireNav · Indoor Fire Vision-Language Navigation</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="#home" aria-label="FireNav home"><span class="brand-mark">F<span></span></span>FireNav<span class="brand-dot">.</span></a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">☰</span></button>
+      <nav id="main-nav" aria-label="Main navigation">
+        <a href="#overview">Overview</a><a href="#demos">Demos</a><a href="#benchmark">Benchmark</a><a href="#method">Method</a><a href="#results">Results</a>
+        <a class="nav-paper" href="FireNav.pdf" target="_blank" rel="noopener">Paper </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-grain" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="eyebrow hero-eyebrow"><span></span> Vision-language navigation · Indoor fire environments</div>
+        <h1>Fire<span>Nav</span><span class="title-dot">.</span></h1>
+        <h2>Decision-Oriented Reconstruction Evidence Routing<br class="desktop-break"> for Vision-Language Navigation in Indoor Fire Environments</h2>
+        <p class="hero-summary">Recover the evidence that matters.<br>Navigate through smoke, low light, and visual uncertainty.</p>
+        <div class="resource-links">
+          <a class="button primary" href="FireNav.pdf" target="_blank" rel="noopener"><span aria-hidden="true">▤</span> Read the paper</a>
+          <a class="button secondary" href="#overview"><span aria-hidden="true">▷</span> Watch the overview</a>
+          <a class="button tertiary" href="FireNav-LaTeX.zip" download>LaTeX source</a>
+        </div>
+        <div class="hero-facts" aria-label="Benchmark and framework highlights">
+          <div><strong>60</strong><span>Indoor scenes</span></div>
+          <div><strong>240</strong><span>Hazard configurations</span></div>
+          <div><strong>CE <em>/</em> PE</strong><span>Matched evaluation tracks</span></div>
+          <div><strong>Frozen</strong><span>Navigation &amp; reconstruction backbones</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="overview-section" id="overview">
+      <div class="container">
+        <div class="video-frame featured-video">
+          <video controls playsinline preload="none" poster="overview.jpg" aria-label="FireNav overview: navigation comparisons and long-horizon planning">
+            <source src="overview.mp4" type="video/mp4">
+            Your browser cannot play this video. <a href="overview.mp4">Download the overview.</a>
+          </video>
+          <div class="video-caption"><span><span class="tiny-dot"></span> FireNav in action</span><span>Overview · 1 min 59 sec · Simulation</span></div>
+        </div>
+        <div class="abstract-layout">
+          <div class="section-intro"><span class="eyebrow">01 / Overview</span><h2>Better visibility.<br><span class="muted">Better decisions?</span></h2></div>
+          <div class="abstract-text">
+            <p>Smoke, poor illumination, and glare can obscure doorways, hazards, and navigation targets. Image restoration offers a natural remedy, but reconstruction fidelity does not necessarily translate into better navigation decisions.</p>
+            <p><strong>FireNav treats reconstruction features as optional evidence.</strong> A lightweight router uses visual information, task context, and prior execution states to decide whether evidence should be admitted and how strongly it should affect native visual tokens. Decision utility calibration learns from the change in action prediction loss with and without candidate evidence.</p>
+            <p>FireVLN-Bench supplies paired clean and degraded observations, task-preserving references, and matched continuous navigation (CE) and physically simulated robot execution (PE). FireNav improves success and path efficiency while limiting changes to the pretrained navigator.</p>
+            <a class="text-link" href="FireNav.pdf" target="_blank" rel="noopener">Read the full manuscript </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="demos">
+      <div class="container">
+        <div class="section-heading"><div><span class="eyebrow">02 / Navigation demonstrations</span><h2>See the decisions unfold.</h2></div><p>First-person observations, robot execution, and route maps expose how local decisions accumulate over a navigation episode.</p></div>
+        <div class="demo-toolbar">
+          <div class="view-tabs" role="group" aria-label="Comparison camera view">
+            <button class="active" type="button" data-comparison-view="multiview" aria-pressed="true">Multi-view</button>
+            <button type="button" data-comparison-view="first_person" aria-pressed="false">First person</button>
+            <button type="button" data-comparison-view="third_person" aria-pressed="false">Third person</button>
+            <button type="button" data-comparison-view="topdown_occupancy" aria-pressed="false">Route map</button>
+          </div>
+          <button class="button small play-comparison" type="button"><span aria-hidden="true">▷</span> Play all</button>
+        </div>
+        <div class="comparison-grid">
+          <article class="demo-card"><div class="demo-card-heading"><span class="method-index">01</span><h3>Native VLN</h3><span class="card-tag">Raw RGB</span></div><video controls playsinline preload="none" data-method="native_vln" poster="native_vln-multiview.jpg" aria-label="Native VLN navigation comparison"><source src="native_vln-multiview.mp4" type="video/mp4"></video><p>The pretrained navigator operating on degraded observations.</p></article>
+          <article class="demo-card"><div class="demo-card-heading"><span class="method-index">02</span><h3>Restored RGB</h3><span class="card-tag">RGB frontend</span></div><video controls playsinline preload="none" data-method="restored_rgb" poster="restored_rgb-multiview.jpg" aria-label="Restored RGB navigation comparison"><source src="restored_rgb-multiview.mp4" type="video/mp4"></video><p>Reconstructed images supplied to the navigation pipeline.</p></article>
+          <article class="demo-card demo-card-featured"><div class="demo-card-heading"><span class="method-index">03</span><h3>FireNav</h3><span class="card-tag">Ours</span></div><video controls playsinline preload="none" data-method="firenav" poster="firenav-multiview.jpg" aria-label="FireNav navigation comparison"><source src="firenav-multiview.mp4" type="video/mp4"></video><p>Native visual tokens augmented with routed reconstruction evidence.</p></article>
+        </div>
+        <p class="figure-note">The methods execute independent trajectories from a shared task setting. Corresponding playback times do not imply identical camera poses or navigation states.</p>
+        <figure class="paper-figure compact-figure"><a href="comparison.webp" target="_blank" rel="noopener" aria-label="Open qualitative trajectory comparison at full resolution"><img src="comparison.webp" width="2600" height="1562" loading="lazy" alt="Qualitative waypoint predictions near a doorway, a fire source, and a person, alongside each method's trajectory map"></a><figcaption>Local waypoint predictions and full trajectories under fire-induced visual degradation. Click the figure to inspect details.</figcaption></figure>
+
+        <div class="long-heading"><div><span class="eyebrow">Long-horizon navigation</span><h3>From local waypoints to subgoal-guided exploration.</h3></div><label class="view-select">Camera view <select id="long-view"><option value="long-horizon">Multi-view</option><option value="long-horizon-first">First person</option><option value="long-horizon-third">Third person</option><option value="long-horizon-map">Route map</option></select></label></div>
+        <div class="long-grid">
+          <div class="video-frame"><video id="long-video" controls playsinline preload="none" poster="long-horizon.jpg" aria-label="Long-horizon navigation and exploration in a simulated fire environment"><source src="long-horizon.mp4" type="video/mp4"></video><div class="video-caption"><span>Long-horizon execution</span><span>Simulation</span></div></div>
+          <div class="subgoal-videos">
+            <article><video controls playsinline preload="none" poster="fire-subgoal.jpg" aria-label="Fire-related subgoal review"><source src="fire-subgoal.mp4" type="video/mp4"></video><h4>Fire-related subgoal</h4><p>Review the local observation and planned direction around a fire source.</p></article>
+            <article><video controls playsinline preload="none" poster="person-subgoal.jpg" aria-label="Person-related subgoal review"><source src="person-subgoal.mp4" type="video/mp4"></video><h4>Person-related subgoal</h4><p>Inspect the navigation context around a person in the scene.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="benchmark">
+      <div class="container">
+        <div class="section-heading"><div><span class="eyebrow">03 / FireVLN-Bench</span><h2>A paired benchmark.<br>A shared evaluation setting.</h2></div><p>Indoor scenes, controlled hazard layouts, and evolving visual degradation connect reconstruction quality to closed-loop navigation.</p></div>
+        <figure class="paper-figure"><a href="benchmark.webp" target="_blank" rel="noopener" aria-label="Open FireVLN-Bench overview at full resolution"><img src="benchmark.webp" width="2600" height="1422" loading="lazy" alt="FireVLN-Bench construction pipeline, indoor scene categories, fire hazards, paired rendering, task annotations, and dataset distribution"></a><figcaption>FireVLN-Bench construction, distribution, and qualitative examples.</figcaption></figure>
+        <div class="benchmark-principles">
+          <article><span class="principle-number">01</span><h3>Task-preserving pairs</h3><p>Clean and degraded references share camera poses and scene states. Clean rendering suppresses nuisance degradation while preserving task and hazard semantics.</p></article>
+          <article><span class="principle-number">02</span><h3>Continuous &amp; physical</h3><p>CE tests continuous navigation. PE executes matched tasks with simulated robot dynamics, adding contact, actuation error, falls, and deadlocks.</p></article>
+          <article><span class="principle-number">03</span><h3>Scene-disjoint evaluation</h3><p>40 training, 8 unseen validation, and 12 unseen test scenes. Scene families and their hazard configurations remain in the same partition.</p></article>
+        </div>
+        <div class="dataset-details"><div><span class="eyebrow">Tasks</span><p>Instruction following <span>·</span> Object search <span>·</span> Point-goal navigation <span>·</span> Frontier exploration</p></div><div><span class="eyebrow">Visual degradation</span><p>Smoke <span>·</span> Low illumination <span>·</span> Glare <span>·</span> Sensor noise <span>·</span> Motion blur</p></div></div>
+        <div class="gallery-heading"><h3>Explore the benchmark environments.</h3><p>Four scene walkthroughs from the supplied benchmark demonstrations.</p></div>
+        <div class="benchmark-videos">
+          <figure><video controls playsinline preload="none" poster="benchmark-1.jpg" aria-label="Benchmark environment walkthrough one"><source src="benchmark-1.mp4" type="video/mp4"></video><figcaption><span>Scene walkthrough 01</span><span>Simulation</span></figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="benchmark-2.jpg" aria-label="Benchmark environment walkthrough two"><source src="benchmark-2.mp4" type="video/mp4"></video><figcaption><span>Scene walkthrough 02</span><span>Simulation</span></figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="benchmark-3.jpg" aria-label="Benchmark environment walkthrough three"><source src="benchmark-3.mp4" type="video/mp4"></video><figcaption><span>Scene walkthrough 03</span><span>Simulation</span></figcaption></figure>
+          <figure><video controls playsinline preload="none" poster="benchmark-4.jpg" aria-label="Benchmark environment walkthrough four"><source src="benchmark-4.mp4" type="video/mp4"></video><figcaption><span>Scene walkthrough 04</span><span>Simulation</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="method">
+      <div class="container">
+        <div class="section-heading"><div><span class="eyebrow">04 / The FireNav framework</span><h2>Reconstruction as evidence.<br><span class="accent">Decisions as supervision.</span></h2></div><p>A frozen native pathway remains the anchor. Auxiliary reconstruction features contribute through a learned, bounded evidence interface.</p></div>
+        <figure class="paper-figure"><a href="method.webp" target="_blank" rel="noopener" aria-label="Open FireNav architecture at full resolution"><img src="method.webp" width="2600" height="1400" loading="lazy" alt="FireNav architecture: frozen native and reconstruction encoders, per-view cross-attention, decision-conditioned routing, bounded residual fusion, and fast and slow navigation branches"></a><figcaption>FireNav preserves native tokens and the navigator's visual interface while adding reconstruction evidence.</figcaption></figure>
+        <div class="method-steps">
+          <article><span class="step-label">01 / Read</span><h3>Retrieve local evidence</h3><p>Native visual tokens query reconstruction features from the same image through cross-attention. The visual token count and language interface remain unchanged.</p></article>
+          <article><span class="step-label">02 / Route</span><h3>Condition on the decision</h3><p>An image gate controls admission; token weights allocate evidence spatially. Routing uses the task, visual statistics, and available prior execution context.</p></article>
+          <article><span class="step-label">03 / Calibrate</span><h3>Learn incremental utility</h3><p>Offline, compare action prediction losses with and without frozen candidate evidence at the same state. Beneficial and harmful interventions supervise admission.</p></article>
+          <article><span class="step-label">04 / Preserve</span><h3>Bound the residual</h3><p>Constrain feature perturbations, initialize evidence contribution at zero, and regularize clean predictions. Cached features avoid repeated history encoding.</p></article>
+        </div>
+        <div class="utility-equation"><div><span class="eyebrow">Decision utility calibration</span><p>Does this evidence improve the next prediction?</p></div><div class="equation" aria-label="Utility equals native action loss minus action loss with candidate evidence">u<sub>t,i</sub> = ℒ<sub>act</sub>(Ŷ<sup>0</sup>, Y<sup>⋆</sup>) − ℒ<sub>act</sub>(Ŷ<sup>+i</sup>, Y<sup>⋆</sup>)</div></div>
+      </div>
+    </section>
+
+    <section class="section" id="results">
+      <div class="container">
+        <div class="section-heading"><div><span class="eyebrow">05 / Experimental results</span><h2>Navigation gains.<br>Controlled intervention.</h2></div><p>Instruction following on the FireVLN-Bench unseen test split. Values below are reported in the supplied manuscript.</p></div>
+        <div class="result-tabs" role="tablist" aria-label="Evaluation track"><button id="tab-pe" role="tab" aria-selected="true" aria-controls="results-panel" data-track="pe" class="active" type="button">Physical environment <span>PE</span></button><button id="tab-ce" role="tab" aria-selected="false" aria-controls="results-panel" data-track="ce" tabindex="-1" type="button">Continuous environment <span>CE</span></button></div>
+        <div id="results-panel" role="tabpanel" aria-labelledby="tab-pe">
+          <div class="result-highlights">
+            <div><span>Success rate</span><strong id="stat-sr">41.6<span>%</span></strong><small id="stat-sr-gain">+14.8 points vs. degraded native VLN</small></div>
+            <div><span>Path efficiency · SPL</span><strong id="stat-spl">32.0<span>%</span></strong><small id="stat-spl-gain">+4.9 points vs. Restored RGB + Adapter</small></div>
+            <div><span>Navigation error</span><strong id="stat-ne">5.65<span>m</span></strong><small id="stat-ne-gain">0.51 m lower vs. Restored RGB + Adapter</small></div>
+          </div>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Navigation results table; scroll horizontally on small screens"><table class="results-table"><caption id="results-caption">Physical environment (PE) · Unseen test · Instruction following</caption><thead><tr><th scope="col">Method</th><th scope="col">NE ↓ <span>meters</span></th><th scope="col">OS ↑ <span>%</span></th><th scope="col">SR ↑ <span>%</span></th><th scope="col">SPL ↑ <span>%</span></th></tr></thead><tbody id="results-body">
+            <tr class="reference-row"><th scope="row">Native VLN <span>Clean reference</span></th><td>4.58</td><td>68.2</td><td>54.1</td><td>42.3</td></tr>
+            <tr><th scope="row">Native VLN <span>Degraded</span></th><td>7.34</td><td>43.0</td><td>26.8</td><td>17.3</td></tr>
+            <tr><th scope="row">AdaIR</th><td>7.10</td><td>45.1</td><td>29.4</td><td>19.7</td></tr>
+            <tr><th scope="row">DCPT</th><td>6.68</td><td>48.8</td><td>34.1</td><td>25.1</td></tr>
+            <tr><th scope="row">MoCE-IR-S</th><td>6.08</td><td>50.9</td><td>34.8</td><td>27.8</td></tr>
+            <tr><th scope="row">DFPIR</th><td>6.65</td><td>49.5</td><td>32.9</td><td>23.7</td></tr>
+            <tr><th scope="row">R2R-Compos</th><td>6.52</td><td>50.5</td><td>34.5</td><td>24.8</td></tr>
+            <tr><th scope="row">DATPRL-IR</th><td>6.68</td><td>49.0</td><td>33.5</td><td>23.7</td></tr>
+            <tr><th scope="row">HOGformer</th><td>6.84</td><td>47.7</td><td>31.5</td><td>22.3</td></tr>
+            <tr><th scope="row">BiLaLoRA</th><td>6.34</td><td>54.2</td><td>35.6</td><td>25.2</td></tr>
+            <tr class="adapter-row"><th scope="row">Raw RGB + Adapter</th><td>6.35</td><td>52.4</td><td>35.3</td><td>25.2</td></tr>
+            <tr><th scope="row">Restored RGB + Adapter</th><td>6.16</td><td>53.9</td><td>37.3</td><td>27.1</td></tr>
+            <tr class="ours-row"><th scope="row">FireNav <span>Ours</span></th><td>5.65</td><td>59.0</td><td>41.6</td><td>32.0</td></tr>
+          </tbody></table></div>
+        </div>
+        <p class="figure-note">NE: navigation error. OS: oracle success. SR: success rate. SPL: success weighted by path length. The clean reference is a separate input condition and is excluded from the degraded-method ranking.</p>
+        <div class="analysis-grid"><article><span class="eyebrow">Why route evidence?</span><h3>Utility calibration matters.</h3><p>Removing utility calibration lowers SPL by <strong>4.0 points in PE</strong> and <strong>4.9 points in CE</strong>. Always-on evidence loses 6.0 / 6.9 SPL points.</p></article><article><span class="eyebrow">Clean observation retention</span><h3>Keep native competence.</h3><p>Clean SR is <strong>52.8% / 67.1%</strong> for FireNav versus 54.1% / 67.5% for native VLN in PE / CE. Retention trades a small degraded-performance gain for better clean behavior.</p></article><article><span class="eyebrow">Navigation update cost</span><h3>Reuse frozen features.</h3><p>FireNav operates at <strong>3.19 navigation updates/s</strong>, with <strong>389.4 ms P95 latency</strong>: 8.4% above native VLN. These rates describe navigation updates, not the locomotion controller.</p></article></div>
+      </div>
+    </section>
+
+    <section class="resources-section" id="resources">
+      <div class="container resource-layout"><div><span class="eyebrow">Resources</span><h2>Explore FireNav.</h2><p>The manuscript and its LaTeX source are available here. Navigation code and benchmark release links will be added when available.</p></div><div class="resource-list"><a href="FireNav.pdf" target="_blank" rel="noopener"><span>Research paper</span><small>PDF manuscript</small></a><a href="FireNav-LaTeX.zip" download><span>Manuscript source</span><small>LaTeX + figures</small></a><div><span>Navigation code</span><small>Coming soon</small></div><div><span>FireVLN-Bench data</span><small>Coming soon</small></div></div></div>
+    </section>
+    <footer class="site-footer"><div class="container"><a class="brand" href="#home">FireNav<span class="brand-dot">.</span></a><p>Decision-oriented reconstruction evidence routing for indoor fire navigation.</p><div class="footer-bottom"><span>FireNav · Research project</span><span>Design references: <a href="https://astra-amap.github.io/omninav.github.io/" target="_blank" rel="noopener">OmniNav</a> · <a href="https://internrobotics.github.io/internvla-n1.github.io/" target="_blank" rel="noopener">InternVLA-N1</a> · <a href="https://amap-cvlab.github.io/ABot-Navigation/ABot-N1/" target="_blank" rel="noopener">ABot-N1</a></span></div></div></footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
