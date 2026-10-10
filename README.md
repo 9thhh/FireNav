@@ -1,6 +1,6 @@
 # FireNav project homepage
 
-GitHub Pages address after deployment: https://9thhh.github.io/FireNav/
+Project page: https://9thhh.github.io/FireNav/
 
 A responsive academic website for **FireNav: Decision-Oriented Reconstruction Evidence Routing for Vision-Language Navigation in Indoor Fire Environments**.
 
@@ -12,15 +12,15 @@ The distribution keeps media next to `index.html`, with relative paths that work
 
 - Layout and copy: `index.html`
 - Responsive styling: `styles.css`
-- Camera views and CE/PE results: `script.js`
+- Video playback and camera views: `script.js`
 - Figures: `benchmark.webp`, `method.webp`, `comparison.webp`
 - Videos: H.264 MP4 files; poster images share their names with a `.jpg` extension.
 
 ## Content provenance
 
 Text, statistics, and results follow the supplied manuscript source.
-The downloadable PDF is the existing September 23, 2026 manuscript, without an arXiv conversion.
-The LaTeX archive contains the specified source export and figures, with paths matching the source.
+The downloadable PDF is the supplied compiled `ICLR2027_Hongbo_Ding__arxiv_/ICLR2027_Hongbo_Ding.pdf`, copied byte for byte.
+The website does not provide a LaTeX source download.
 The website does not independently validate experiment provenance.
 
 All demonstrations come from the supplied Demo directory and depict simulation.
@@ -28,7 +28,7 @@ Browser encodings preserve duration, use 20 fps, H.264/yuv420p, and fast-start M
 The overview retains its original editorial speed and captions.
 Comparison videos execute independent trajectories; playback time is not a matched-state comparison.
 
-Authors and affiliations are omitted because the provided source uses placeholders.
+Authors and affiliations are omitted because the supplied PDF identifies anonymous authors.
 No arXiv identifier, model URL, navigation code repository, or dataset release URL is invented.
 
 ## Design references
@@ -37,4 +37,6 @@ No arXiv identifier, model URL, navigation code repository, or dataset release U
 - https://internrobotics.github.io/internvla-n1.github.io/
 - https://amap-cvlab.github.io/ABot-Navigation/ABot-N1/
 
-Layout and implementation are original. The references informed the academic structure, demonstrations, and results presentation.
+Layout and implementation are original. The simplified page uses white backgrounds, locally hosted Inter typography, short captions, compact results, and native video controls.
+The font license is included as `inter-OFL.txt`.
+Responsive media preserve their full frames. Print styles keep figure and video-poster groups together on pages.
