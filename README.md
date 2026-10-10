@@ -13,12 +13,13 @@ The distribution keeps media next to `index.html`, with relative paths that work
 - Layout and copy: `index.html`
 - Responsive styling: `styles.css`
 - Video playback and camera views: `script.js`
-- Figures: `benchmark.webp`, `method.webp`, `comparison.webp`
+- Figures: `benchmark.webp`, `method.webp`, `comparison.webp`, `results-table.webp`
 - Videos: H.264 MP4 files; poster images share their names with a `.jpg` extension.
 
 ## Content provenance
 
-Text, statistics, and results follow the supplied manuscript source.
+The abstract is copied verbatim from the supplied manuscript source. Short section introductions are verbatim excerpts.
+`results-table.webp` is a lossless 6x render of the complete Table 1 from page 7 of the supplied PDF, including its original caption, all 13 methods, venues, eight metrics, and ranking styles.
 The downloadable PDF is the supplied compiled `ICLR2027_Hongbo_Ding__arxiv_/ICLR2027_Hongbo_Ding.pdf`, copied byte for byte.
 The website does not provide a LaTeX source download.
 The website does not independently validate experiment provenance.
@@ -37,6 +38,7 @@ No arXiv identifier, model URL, navigation code repository, or dataset release U
 - https://internrobotics.github.io/internvla-n1.github.io/
 - https://amap-cvlab.github.io/ABot-Navigation/ABot-N1/
 
-Layout and implementation are original. The simplified page uses white backgrounds, locally hosted Inter typography, short captions, compact results, and native video controls.
+Layout and implementation are original. The page uses a bold full paper title, white backgrounds, locally hosted Inter typography, original manuscript text, and native video controls.
+The main content uses 92% of the available window width. Media scale with that width, without viewport-height caps; grids reflow at 800px and 600px. Full-resolution figures open from their links.
 The font license is included as `inter-OFL.txt`.
 Responsive media preserve their full frames. Print styles keep figure and video-poster groups together on pages.
